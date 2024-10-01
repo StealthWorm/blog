@@ -1,0 +1,14 @@
+# Options
+Options -indexes
+
+RewriteEngine On
+RewriteBase /blog
+
+#files
+RewriteCond %{SCRIPT_FILENAME} !-f
+#directories
+RewriteCond %{SCRIPT_FILENAME} !-d
+#links
+RewriteCond %{SCRIPT_FILENAME} !-l 
+
+RewriteRule ^(.*)$ index.php/$1 [QSA,L]

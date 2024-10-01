@@ -1,0 +1,27 @@
+{
+    "name": "thier/blog",
+    "description": "PHP Basics",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "sistema\\": "sistema/"
+        },
+        "files": [
+            "sistema/config.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "StealthWorm",
+            "email": "thierrypitela@hotmail.com",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=8.0",
+        "bissolli/validador-cpf-cnpj": "^1.2",
+        "pecee/simple-router": "dev-master",
+        "twig/twig": "^3.0"
+    }
+}
