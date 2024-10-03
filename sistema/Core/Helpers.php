@@ -2,8 +2,26 @@
 
 namespace Sistema\Core;
 
+use Exception;
+
 class Helpers
 {
+  public static function redirectPathURL(string $url = null): void
+  {
+    header('HTTP/1.1 302 Found');
+
+    $local = ($url ? self::url($url) : self::url());
+
+    // Check if the constructed URL is valid
+    if (filter_var($local, FILTER_VALIDATE_URL) === false) {
+      // Fallback to a default URL (like home or an error page)
+      $local = self::url(); // Adjust this as needed
+    }
+
+    header("Location: " . $local);
+    exit();
+  }
+
   /**
    * Validate CPF number
    * @param string $cpf CPF number
@@ -14,7 +32,7 @@ class Helpers
     $cpf = self::removeNonNumericChars($cpf); // para chamar funções estáticas INTERNAS precisamos do "self::"
 
     if (strlen($cpf) != 11) {
-      return false;
+      throw new Exception("O CPF precisa ter 11 digitos");
     }
     // Check if all digits are the same (e.g., "11111111111"), which is invalid
     if (preg_match('/(\d)\1{10}/', $cpf)) {
@@ -30,7 +48,12 @@ class Helpers
       $sum += $cpf[$i] * $j;
     }
     $secondCheckDigit = $sum % 11 < 2 ? 0 : 11 - ($sum % 11);
+
     // Check if the calculated check digits match the input CPF's last two digits
+    if ($firstCheckDigit != $cpf[9] || $secondCheckDigit != $cpf[10]) {
+      throw new Exception('CPF Inválido');
+    };
+
     return $firstCheckDigit == $cpf[9] && $secondCheckDigit == $cpf[10];
   }
 

@@ -30,4 +30,11 @@ class SiteController extends Controller
       'city' => 'Ponta Grossa'
     ]);
   }
+
+  public function error404(): void
+  {
+    echo $this->template->render('404.html', [
+      'title' => 'Página não encontrada',
+    ]);
+  }
 }
