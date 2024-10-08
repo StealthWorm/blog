@@ -9,7 +9,8 @@
 <?php
 
 require 'vendor/autoload.php';
-// require 'rotas.php';
+require 'rotas.php';
+
 use sistema\Core\Connection;
 use sistema\Models\Post;
 
@@ -19,11 +20,6 @@ use sistema\Models\Post;
 // foreach ($posts as $post) {
 //   echo $post->title . '<br>';
 // }
-
-$postIndex = (new Post())->findById(1);
-foreach ($postIndex as $post) {
-  echo $post->title . '<br>';
-}
 
 // require_once 'sistema/config.php';
 // include_once 'sistema/core/Helpers.php';

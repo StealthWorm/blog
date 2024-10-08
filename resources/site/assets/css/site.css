@@ -1,0 +1,29 @@
+.card {
+  height: 300px;
+  overflow: hidden;
+}
+
+.container {
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.row .card {
+  flex: 0 0 45%;
+  margin: 0.5rem;
+}
+
+aside {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 300px;
+  height: 100vh;
+  padding: 20px;
+  background-color: #f8f9fa;
+  overflow-y: auto;
+}
+
+.content {
+  margin-right: 320px;
+}

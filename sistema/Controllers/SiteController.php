@@ -3,6 +3,9 @@
 namespace sistema\Controllers;
 
 use sistema\Core\Controller;
+use sistema\Core\Helpers;
+use sistema\Models\Category;
+use sistema\Models\Post;
 
 class SiteController extends Controller
 {
@@ -13,9 +16,25 @@ class SiteController extends Controller
 
   public function index(): void
   {
+    $posts = (new Post())->findAll();
+
     echo $this->template->render('index.html', [
-      'title' => 'Home',
-      'subtitle' => 'Site subtitle'
+      'posts' => $posts,
+      'categories' => $this->categories()
+    ]);
+  }
+
+  public function post(int $id): void
+  {
+    $post = (new Post())->findById($id);
+
+    if (!$post) {
+      Helpers::redirectPathURL('404');
+    }
+
+    echo $this->template->render('post-by-id.html', [
+      'post' => $post,
+      'categories' => $this->categories()
     ]);
   }
 
@@ -29,6 +48,11 @@ class SiteController extends Controller
       'country' => 'BR',
       'city' => 'Ponta Grossa'
     ]);
+  }
+
+  public function categories()
+  {
+    return (new Category())->findAll();
   }
 
   public function error404(): void

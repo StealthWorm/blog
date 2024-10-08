@@ -1,12 +1,32 @@
 {% extends 'base.html' %}
 {% block content %}
+
 <!-- "extends " é a estrutura para extender o html base, que funciona como um layout -->
 <!-- bloco de conteudo deve possuir o mesmo nome que o definido como referencia no arquivo base -->
-<div class="container py-5">
-  <h1>{{'Index' | upper}}</h1>
+<div class="container my-5" style="max-height: 80vh; overflow-y: auto;">
+  <div class="row">
+    <div class="col-lg-9 col-md-12">
+      <div class="row">
+        {% for post in posts %}
+        <div class="col-md-6 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <a href="{{url('post/' ~ post.id)}}"
+                class="btn btn-outline-info btn-lg w-100" role="button">
+                <h5 class="card-title">{{post.title}}</h5>
+                <p class="card-text">{{post.text}}</p>
+              </a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- <aside class="col-lg-3">
+      {% include 'sidebar.html' %}
+    </aside> -->
+  </div>
 </div>
-<!-- <p>{{ url('admin') }}</p> -->
-<!-- função chamada a partir da function Twig no Template -->
-<!-- <p>{{ saudacao() }}</p>
-    <p>{{ resumirText('Hello big text', 2) }}</p> -->
+
 {% endblock %}

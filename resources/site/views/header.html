@@ -15,24 +15,35 @@
       <div class="collapse navbar-collapse" id="navbarExample01">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item active">
-            <a class="nav-link text-light" aria-current="page"
-              href="./">Home</a>
+            <a class="nav-link text-light active" aria-current="page"
+              href="/blog">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-light" href="./about">About</a>
+            <a class="nav-link text-light" href="/blog/about">About</a>
           </li>
+
+          <li class="nav-item">
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Categorias
+              </button>
+              <div class="dropdown-menu">
+                {% for category in categories %}
+                <a href="#"
+                  class="dropdown-item text-decoration-none text-secondary">{{
+                  category.titulo
+                  }}</a>
+                {% endfor %}
+              </div>
+            </div>
+          </li>
+
         </ul>
       </div>
     </div>
   </nav>
-  <!-- Navbar -->
-
-  <!-- Jumbotron -->
-  <!-- <div class="p-5 text-center bg-body-tertiary">
-    <h1 class="mb-3">Heading</h1>
-    <h4 class="mb-3">Subheading</h4>
-    <a data-mdb-ripple-init class="btn btn-primary" href role="button">Call to
-      action</a>
-  </div> -->
-  <!-- Jumbotron -->
 </header>
