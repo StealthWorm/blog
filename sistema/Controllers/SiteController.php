@@ -38,6 +38,21 @@ class SiteController extends Controller
     ]);
   }
 
+  public function category(int $id): void
+  {
+    // echo $id;
+    $posts = (new Category())->findPosts($id);
+
+    if (!$posts) {
+      Helpers::redirectPathURL('404');
+    }
+
+    echo $this->template->render('categories.html', [
+      'posts' => $posts,
+      'categories' => $this->categories()
+    ]);
+  }
+
   public function about(): void
   {
     echo $this->template->render('about.html', [

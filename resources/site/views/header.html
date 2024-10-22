@@ -33,7 +33,7 @@
               </button>
               <div class="dropdown-menu">
                 {% for category in categories %}
-                <a href="#"
+                <a href="{{ url('category/'~category.id) }}"
                   class="dropdown-item text-decoration-none text-secondary">{{
                   category.titulo
                   }}</a>

@@ -3,8 +3,10 @@
 <ul class="list-group list-group-flush">
   {% for category in categories %}
   <li class="list-group-item list-group-item-action">
-    <a href="#" class="text-decoration-none text-secondary">{{ category.titulo
-      }}</a>
+    <a href="{{ url('category/'~category.id) }}"
+      class="text-decoration-none text-secondary">
+      {{ category.titulo}}
+    </a>
   </li>
   {% endfor %}
 </ul>

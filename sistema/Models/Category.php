@@ -26,4 +26,15 @@ class Category
 
     return $stmt->fetchAll();
   }
+
+  public function findPosts(int $id = null): array
+  {
+    $stmt = Connection::getInstance()->query(
+      "SELECT * FROM posts WHERE category_id = {$id} 
+       AND status = 1 ORDER BY id DESC
+      "
+    );
+
+    return $stmt->fetchAll();
+  }
 }
